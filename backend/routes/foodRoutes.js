@@ -1,5 +1,5 @@
 import express from "express";
-import { addFood } from "../controllers/foodcontroller.js";
+import { addFood, listFood } from "../controllers/foodcontroller.js";
 import multer from "multer"; //Image storage system
 
 const foodRouter = express.Router();
@@ -13,6 +13,7 @@ const foodRouter = express.Router();
 // });
 
 // const upload = multer({ storage: storage });
-foodRouter.post("/add",addFood); //, upload.single("image")
+foodRouter.post("/add", addFood); //, upload.single("image")
+foodRouter.get("/list", listFood);
 
 export default foodRouter;
