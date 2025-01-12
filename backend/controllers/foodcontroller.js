@@ -13,7 +13,7 @@ const addFood = async (req, res) => {
     image: image_filename,
     category: req.body.category,
   });
-  
+
   try {
     await food.save();
     console.log("Successfully");
@@ -40,7 +40,8 @@ const removefood = async (req, res) => {
   try {
     const food = await foodModel.find(req.body.id);
     // fs.unlink(`uploads/${food.image}`,()={})
-    await foodModel.findByIdAndDelete(req.body._id);
+
+    const result = await foodModel.findByIdAndDelete(req.body._id);
     res.json({ success: true, message: "Food Removed" });
   } catch (error) {
     console.log(error);
