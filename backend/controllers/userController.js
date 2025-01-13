@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
 
-
 // login user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -15,14 +14,14 @@ const loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-   
+
     if (!isMatch) {
       return res.json({ success: false, message: "Invalid credentials" });
     }
 
-    const tokan = createToken(user._id);
-    console.log("token: ", tokan);
-    res.json({ success: true, tokan });
+    const token = createToken(user._id);
+    console.log("token: ", token);
+    res.json({ success: true, token });
   } catch (error) {
     return res.json({ success: false, message: "Error" });
   }

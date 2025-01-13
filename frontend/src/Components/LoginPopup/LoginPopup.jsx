@@ -27,12 +27,15 @@ const LoginPopup = ({ setShowLogin }) => {
     } else {
       newURL += "/api/user/register";
     }
+    console.log("URL : ", newURL);
 
     const response = await axios.post(newURL, data);
-
+    console.log("Data : ", data);
     if (response.data.success) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
+      const valid = response.data.token;
+      setToken(valid);
+      console.log("tokenf : ", valid);
+      localStorage.setItem("token", valid);
       setShowLogin(false);
     } else {
       alert(response.data.message);

@@ -1,12 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/frontend_assets/assets";
+
 // import { useContext } from "react";
+
 export const StoreContext = createContext();
 
 const StoreContextProvider = (props) => {
   const [cartItem, setCartItem] = useState({});
   const url = "http://localhost:4000";
   const [token, setToken] = useState("");
+  const [food_list, setFood_list] = useState("");
 
   const addToCart = (itemId) => {
     console.log("addtocart item");
@@ -32,6 +34,12 @@ const StoreContextProvider = (props) => {
     }
     return totalAmount;
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  });
   const contextValue = {
     food_list,
     cartItem,
