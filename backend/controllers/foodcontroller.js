@@ -5,7 +5,7 @@ import fs from "fs";
 
 const addFood = async (req, res) => {
   let image_filename = `${req.file.filename}`; //change it finally
-  console.log(`Uploaded file: ${image_filename}`);
+  // console.log(`Uploaded file: ${image_filename}`);
   const food = new foodModel({
     name: req.body.name,
     description: req.body.description,
@@ -38,8 +38,14 @@ const listFood = async (req, res) => {
 // Remove food item
 const removefood = async (req, res) => {
   try {
-    const food = await foodModel.find(req.body.id);
-    // fs.unlink(`uploads/${food.image}`,()={})
+    const food = await foodModel.findById(req.body._id);
+    const filepath = `uploads/${food.image}`;
+    console.log("file is ", filepath);
+    fs.unlink(filepath, (err) => {
+      if (err) {
+        console.error("Error while deleting file:", err);
+      }
+    });
 
     const result = await foodModel.findByIdAndDelete(req.body._id);
     res.json({ success: true, message: "Food Removed" });
@@ -48,5 +54,7 @@ const removefood = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
+
+// remove image
 
 export { addFood, listFood, removefood };
