@@ -5,6 +5,7 @@ import foodRouter from "./routes/foodRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import cartRouter from "./routes/cartRoutes.js";
 import "dotenv/config"; //.env file excess in server side
+import orderRoutes from "./routes/orderRoutes.js";
 // app config
 const app = express();
 const port = 4000;
@@ -21,7 +22,7 @@ app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
-
+app.use("/api/order", orderRoutes);
 app.get("/", (req, res) => {
   res.send("API Working");
 });
