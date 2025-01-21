@@ -14,7 +14,6 @@ const myorder = () => {
       {},
       { headers: { token } }
     );
-    console.log("Orders : ", response.data.data);
     setData(response.data.data);
   };
 
@@ -46,7 +45,7 @@ const myorder = () => {
               <p>
                 <span>&#x25cf;</span> <b>{order.status}</b>
               </p>
-              <button>Track Order</button>
+              <button onClick={fetchOrders}>Track Order</button>
             </div>
           );
         })}

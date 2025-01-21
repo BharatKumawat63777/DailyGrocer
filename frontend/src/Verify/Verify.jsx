@@ -23,7 +23,7 @@ const Verify = () => {
   useEffect(() => {
     verifyPayment();
   });
-  console.log(success, orderId);
+  
   return (
     <div className="verify">
       <div className="spinner"></div>
