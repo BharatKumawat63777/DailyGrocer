@@ -15,7 +15,7 @@ const placeOrder = async (req, res) => {
     });
     await newOrder.save();
     await userModel.findByIdAndUpdate(req.body.userID, { cartData: {} });
-    console.log("Order:", newOrder);
+   
     const line_items = req.body.items.map((item) => ({
       price_data: {
         currency: "inr",
@@ -42,7 +42,7 @@ const placeOrder = async (req, res) => {
       success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
     });
-    console.log("RL: ", session.url);
+    
     res.json({ success: true, session_url: session.url });
   } catch (error) {
     console.log(error);
@@ -66,4 +66,46 @@ const verifyOrder = async (req, res) => {
   }
 };
 
-export default { placeOrder, verifyOrder };
+// user orders for frontend
+const userOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.find({ userId: req.body.userID });
+   
+    res.json({ success: true, data: orders });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+// Listing orders for admin panel
+const listOrders = async (req, res) => {
+  try {
+    const order = await orderModel.find({});
+    res.json({ success: true, data: order });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+// api for updating order status
+const updateStatus = async (req, res) => {
+  try {
+    await orderModel.findByIdAndUpdate(req.body.orderId, {
+      status: req.body.status,
+    });
+    res.json({ success: true, message: "Status Updated" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: true, message: "Error" });
+  }
+};
+
+export default {
+  placeOrder,
+  verifyOrder,
+  userOrders,
+  listOrders,
+  updateStatus,
+};
