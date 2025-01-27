@@ -6,23 +6,35 @@ import { v2 as cloudinary } from "cloudinary";
 
 const addFood = async (req, res) => {
   // Configuration
-  cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.CLOUD_API_KEY,
-    api_secret: process.env.CLOUD_API_SECRET, // Click 'View API Keys' above to copy your API secret
-  });
-
-  let img = req.body.image; //change it finally
-  if (img) {
-    const uploadedResponse = await cloudinary.uploader.upload(img);
-    img = uploadedResponse.secure_url;
-    console.log(img);
+  const file = req.file;
+  console.log("file: ", file);
+  let imgUrl = null;
+  if (file) {
+    try {
+      // Promisify the upload_stream
+      imgUrl = await new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+          { resource_type: "image" },
+          (error, result) => {
+            if (error) return reject(error);
+            resolve(result.secure_url);
+          }
+        );
+        uploadStream.end(file.buffer); // Use the file buffer
+      });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      return res
+        .status(500)
+        .json({ success: false, message: "Image Upload Error" });
+    }
   }
+  console.log("image URL :", imgUrl);
   const food = new foodModel({
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    image: img,
+    image: imgUrl,
     category: req.body.category,
   });
 
@@ -51,13 +63,7 @@ const listFood = async (req, res) => {
 const removefood = async (req, res) => {
   try {
     const food = await foodModel.findById(req.body._id);
-    // const filepath = `uploads/${food.image}`;
-
-    // fs.unlink(filepath, (err) => {
-    //   if (err) {
-    //     console.error("Error while deleting file:", err);
-    //   }
-    // });
+    
     const imgId = food.image.split("/").pop().split(".")[0];
     await cloudinary.uploader.destroy(imgId);
 
