@@ -10,7 +10,7 @@ const Orders = ({ url }) => {
     const response = await axios.get(url + "/api/order/listorders");
     if (response.data.success) {
       setOrders(response.data.data);
-      console.log("Orderlist: ", response.data.data);
+    
     } else {
       toast.error("Error");
     }
