@@ -29,8 +29,9 @@
 }
 
 .explore-menu-list-item img{
-    width: 7.5vw;
+    width: 10.5vw;
     min-width: 80px;
+    max-height: 100px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.2s;

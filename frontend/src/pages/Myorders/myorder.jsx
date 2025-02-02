@@ -18,9 +18,15 @@ const myorder = () => {
   };
 
   useEffect(() => {
-    if (token) {
-      fetchOrders();
+    if (!token) {
+      return;
     }
+    fetchOrders();
+    const interval = setInterval(() => {
+      fetchOrders(); // Auto-fetch every 10 seconds
+    }, 10000); // 10,000ms = 10 sec
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, [token]);
   return (
     <div className="my-orders">
@@ -35,17 +41,21 @@ const myorder = () => {
                   if (index === order.items.length - 1) {
                     return item.name + " x " + item.quantity;
                   } else {
-                    return item.name + " x " + item.quantity +", ";
+                    return item.name + " x " + item.quantity + ", ";
                   }
-                  
                 })}
               </p>
               <p>&#x20B9;{order.amount}.00</p>
               <p>Items: {order.items.length}</p>
               <p>
-                <span>&#x25cf;</span> <b>{order.status}</b>
+                <span
+                  className={order.status === "Delivered" ? "green" : "tomato"}
+                >
+                  &#x25cf;
+                </span>{" "}
+                <b>{order.status}</b>
               </p>
-              <button onClick={fetchOrders}>Track Order</button>
+              <button onClick={() => fetchOrders()}>Track Order</button>
             </div>
           );
         })}

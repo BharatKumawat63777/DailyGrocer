@@ -5,7 +5,9 @@
   align-items: center;
 }
 .navbar .logo {
-  width: 150px;
+  width: 120px;
+  height: 80px;
+
 }
 
 .navbar-menu {

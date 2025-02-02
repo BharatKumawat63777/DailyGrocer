@@ -8,9 +8,9 @@ const Orders = ({ url }) => {
 
   const AllorderList = async () => {
     const response = await axios.get(url + "/api/order/listorders");
+
     if (response.data.success) {
       setOrders(response.data.data);
-    
     } else {
       toast.error("Error");
     }
@@ -31,6 +31,11 @@ const Orders = ({ url }) => {
 
   useEffect(() => {
     AllorderList();
+    const interval = setInterval(() => {
+      AllorderList(); // Auto-fetch every 10 seconds
+    }, 3000); // 10,000ms = 10 sec
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   return (
@@ -52,16 +57,12 @@ const Orders = ({ url }) => {
                 })}
               </p>
               <p className="order-item-name">
-                Name : {order.address.firstName + " " + order.address.lastName}
+               <h4> Name :</h4> {order.address.firstName + " " + order.address.lastName}
               </p>
               <div className="order-item-address">
-                <p>
-                  <h4>Address :</h4> {order.address.street + " , "}
-                </p>
+                <h4>Address :</h4> {order.address.street + " , "}
                 <p>
                   {order.address.city +
-                    " , " +
-                    order.address.state +
                     " , " +
                     order.address.country +
                     " , " +

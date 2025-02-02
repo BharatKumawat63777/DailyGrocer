@@ -10,7 +10,7 @@ const Add = () => {
     name: "",
     description: "",
     price: "",
-    category: "Salad",
+    category: "Rice",
   });
 
   const onChangeHandler = (event) => {
@@ -21,7 +21,7 @@ const Add = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-   
+
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
@@ -30,7 +30,7 @@ const Add = () => {
     formData.append("image", image);
 
     const response = await axios.post(`${url}/api/food/add`, formData);
-    
+
     if (response.data.success) {
       setData({
         name: "",
@@ -89,24 +89,25 @@ const Add = () => {
           <div className="add-category flex-col">
             <p>Product categroy</p>
             <select onChange={onChangeHandler} name="category">
-              <option value="Salad">Salad</option>
-              <option value="Rolls">Rolls</option>
-              <option value="Deserts">Deserts</option>
-              <option value="Sandwich">Sandwich</option>
-              <option value="Cake">Cake</option>
-              <option value="Pure veg">Pure Veg</option>
-              <option value="Pasta">Pasta</option>
-              <option value="Noodles">Noodles</option>
+              <option value="Rice">Rice</option>
+              <option value="Dals & Puless">Dals & Puless</option>
+              <option value="Oils and Ghee">Oils and Ghee</option>
+              <option value="Dry Fruits">Dry Fruits</option>
+              <option value="Tea leaf">Tea leaf</option>
+              <option value="Sugar">Sugar</option>
+              <option value="Biscuits">Biscuits</option>
+              <option value="Cool Drink">Cool Drink</option>
+              <option value="Other Item">Other Item</option>
             </select>
           </div>
           <div className="add-price flex-col">
-            <p>Product price</p>
+            <p>Product price(&#x20b9;)</p>
             <input
               onChange={onChangeHandler}
               value={data.price}
               type="Number"
               name="price"
-              placeholder="$20"
+              placeholder="20"
             />
           </div>
         </div>

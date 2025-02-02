@@ -2,7 +2,9 @@ import React, { useContext, useState } from "react";
 import "./LoginPopup.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import { StoreContext } from "../../context/StoreContext";
+
 import axios from "axios";
+import { toast } from "react-toastify";
 const LoginPopup = ({ setShowLogin }) => {
   const { url, token, setToken } = useContext(StoreContext);
 
@@ -30,15 +32,16 @@ const LoginPopup = ({ setShowLogin }) => {
     console.log("URL : ", newURL);
 
     const response = await axios.post(newURL, data);
-    console.log("Data : ", data);
+    // console.log("Data : ", data);
     if (response.data.success) {
       const valid = response.data.token;
       setToken(valid);
       console.log("tokenf : ", valid);
       localStorage.setItem("token", valid);
       setShowLogin(false);
+      toast.success("Successfully Login");
     } else {
-      alert(response.data.message);
+      toast.error(response.data.message);
     }
   };
   return (

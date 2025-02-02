@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Cart = () => {
-  const { cartItem, foodlist, removeFromCart, getTotalCartAmount, url } =
+  const { cartItem, foodlist, removeFromCart, getTotalCartAmount, url, token } =
     useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -62,7 +63,11 @@ const Cart = () => {
             </div>
             <hr />
           </div>
-          <button onClick={() => navigate("/order")}>
+          <button
+            onClick={() =>{
+              token ?  navigate("/order") : toast.error("First Login then continue....")}
+            }
+          >
             PROCEED TO CHECKOUT
           </button>
         </div>

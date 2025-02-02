@@ -12,7 +12,7 @@
 }
 
 .food-item-info {
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
 }
 .food-item-name-rating {
   display: flex;
@@ -29,16 +29,20 @@
     width: 80px;
 }
 .food-item-desc{
+  padding: 20px 20px 10px 20px;
     color: #676767;
     font-size: 15px;
 }
 .food-item-price{
+  padding-left: 20px;
     color: tomato;
     font-size: 22px;
     font-weight: 500;
 }
 .food-item-img-container{
     position: relative;
+    max-height: 350px;
+    max-width: 350px;
 }
 
 .food-item-img-container .add{

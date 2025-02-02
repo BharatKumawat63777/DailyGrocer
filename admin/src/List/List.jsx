@@ -7,7 +7,7 @@ import { url } from "../assets/admin_assets/assets.js";
 
 const List = () => {
   const [list, setList] = useState([]);
-  // const imageURL = `https://res.cloudinary.com/dqadkpgtj/image/upload/v123456/`;
+
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
     if (response.data.success) {
@@ -15,11 +15,11 @@ const List = () => {
     } else {
       toast.error("Error");
     }
-    console.log(response.data);
+
   };
 
   const removeFood = async (foodId) => {
-    console.log("delete id :", foodId);
+    
     const response = await axios.post(`${url}/api/food/remove`, {
       _id: foodId,
     });

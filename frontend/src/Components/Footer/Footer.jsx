@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <h2>Krishna Kirna Store</h2>
           <p>learn about footer in this site</p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
@@ -24,14 +24,16 @@ const Footer = () => {
         <div className="footer-content-right">
           <h2>Get in Touch</h2>
           <ul>
-            <li>+1-212-485-2581</li>
-            <li>contact@tomato.com</li>
+            <h3>Mr.Ugama Ram ,Mr.Sunil</h3>
+            <li>9413575636,7200131568</li>
+            <li>krishnakiranastore@gmail.com</li>
+
           </ul>
         </div>
       </div>
       <hr />
       <p className="footer-copyright">
-        Copyright 2024 @tomato.com- all Right Reserved.
+        Copyright 2024 @krishnakirna.com- all Right Reserved.
       </p>
     </div>
   );

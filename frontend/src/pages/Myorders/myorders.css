@@ -23,9 +23,14 @@
   width: 50px;
 }
 
-.my-orders-order p span {
+.tomato {
   color: tomato;
 }
+
+.green {
+  color: rgb(83, 240, 10);
+}
+
 
 .my-orders-order p b {
   font-weight: 500;

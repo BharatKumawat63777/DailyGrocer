@@ -1,5 +1,5 @@
 import express from "express";
-// import { CloudinaryStorage } from "multer-storage-cloudinary";
+
 import {
   addFood,
   listFood,
@@ -23,7 +23,7 @@ cloudinary.config({
 // Import multer
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-// console.log(upload);
+
 
 foodRouter.post("/add", upload.single("image"), addFood); //, upload.single("image")
 foodRouter.get("/list", listFood);

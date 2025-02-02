@@ -7,8 +7,14 @@
 
 .navbar .logo{
     width: max(10%,80px);
+    height: 80px;
+    clip-path: circle(70%);
+    /* object-fit: cover; */
 }
 
 .navbar .profile{
-    width: 40px;
+    width: 100px;
+    height: 80px;
+    clip-path: circle(50%);
+    object-fit: cover;
 }
