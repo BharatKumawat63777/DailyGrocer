@@ -8,7 +8,7 @@ import Orders from "./Orders/Orders";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
-  const url = "https://food-delivery-backend-4u6z.onrender.com";
+ 
   return (
     <div>
       <ToastContainer />
@@ -19,7 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Add />} />
           <Route path="/list" element={<List />} />
-          <Route path="/order" element={<Orders url={url}/>} />
+          <Route path="/order" element={<Orders />} />
         </Routes>
       </div>
     </div>

@@ -19,4 +19,4 @@ export const assets = {
   admin_panel,
 };
 
-export const url = "https://food-delivery-backend-4u6z.onrender.com";
+

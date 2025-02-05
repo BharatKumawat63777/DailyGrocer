@@ -3,9 +3,11 @@ import "./List.css";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-import { url } from "../assets/admin_assets/assets.js";
+import { useSelector } from "react-redux";
 
 const List = () => {
+  const url = useSelector((state) => state.url.url);
+
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
@@ -15,11 +17,9 @@ const List = () => {
     } else {
       toast.error("Error");
     }
-
   };
 
   const removeFood = async (foodId) => {
-    
     const response = await axios.post(`${url}/api/food/remove`, {
       _id: foodId,
     });

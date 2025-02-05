@@ -3,7 +3,7 @@ import "./Add.css";
 import { assets } from "../assets/admin_assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { url } from "../assets/admin_assets/assets.js";
+
 const Add = () => {
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
