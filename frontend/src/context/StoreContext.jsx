@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 // import { useContext } from "react";
 
 export const StoreContext = createContext();
@@ -58,10 +59,12 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchFoodlist = async () => {
+    
     const response = await axios.get(url + "/api/food/list");
     setFoodlist(response.data.data);
   };
   useEffect(() => {
+    toast.success("Take few time data fetching,wait please");
     fetchFoodlist();
     const interval = setInterval(() => {
       fetchFoodlist(); // Auto-fetch every 10 seconds

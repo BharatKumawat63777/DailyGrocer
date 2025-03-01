@@ -37,7 +37,9 @@ const Orders = () => {
   };
 
   useEffect(() => {
+    toast.success("take some time data fetching");
     AllorderList();
+    
     const interval = setInterval(() => {
       AllorderList(); // Auto-fetch every 10 seconds
     }, 3000); // 3,000ms = 3 sec

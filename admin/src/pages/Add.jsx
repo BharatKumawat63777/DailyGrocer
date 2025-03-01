@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Add.css";
 import { assets } from "../assets/admin_assets/assets";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Add = () => {
+  const url = useSelector((state) => state.url.url);
+
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -96,7 +99,7 @@ const Add = () => {
               <option value="Tea leaf">Tea leaf</option>
               <option value="Sugar">Sugar</option>
               <option value="Biscuits">Biscuits</option>
-              <option value="Cool Drink">Cool Drink</option>
+              <option value="Cold Drink">Cold Drink</option>
               <option value="Other Item">Other Item</option>
             </select>
           </div>
