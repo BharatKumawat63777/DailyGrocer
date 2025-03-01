@@ -14,11 +14,9 @@ const Orders = () => {
   const dispatch = useDispatch();
 
   const AllorderList = async () => {
-    toast.success("Please wait, Loading Data...");
     const response = await axios.get(url + "/api/order/listorders");
 
     if (response.data.success) {
-      toast.success("Successfully complete...");
       dispatch(setOrders(response.data.data));
     } else {
       toast.error("Error");
@@ -39,9 +37,9 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    toast.success("take some time data fetching");
+    toast.success("Wait few time...");
     AllorderList();
-
+    toast.success("Successfully complete...");
     const interval = setInterval(() => {
       AllorderList(); // Auto-fetch every 10 seconds
     }, 3000); // 3,000ms = 3 sec
