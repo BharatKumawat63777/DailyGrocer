@@ -66,6 +66,7 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     toast.success("Take few time data fetching,wait please");
     fetchFoodlist();
+    toast.success("Successful Fetch data");
     const interval = setInterval(() => {
       fetchFoodlist(); // Auto-fetch every 10 seconds
     }, 10000); // 10,000ms = 10 sec

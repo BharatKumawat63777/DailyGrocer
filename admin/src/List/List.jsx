@@ -11,8 +11,10 @@ const List = () => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
+    toast.success("Wait a minute...");
     const response = await axios.get(`${url}/api/food/list`);
     if (response.data.success) {
+      toast.success("Successfully fatch data");
       setList(response.data.data);
     } else {
       toast.error("Error");
