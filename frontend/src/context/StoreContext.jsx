@@ -57,16 +57,17 @@ const StoreContextProvider = (props) => {
 
     return totalAmount;
   };
-
-  const fetchFoodlist = async () => {
-    
+  let count =true; //it is using to check first time data fetching more time taking then costmer information
+  const fetchFoodlist = async () => { 
     const response = await axios.get(url + "/api/food/list");
     setFoodlist(response.data.data);
+    if(count==true) toast.success("Successful Fetch data");
+    count = false;
   };
   useEffect(() => {
-    toast.success("Take few time data fetching,wait please");
+    toast.success("wait few seconds please");
     fetchFoodlist();
-    toast.success("Successful Fetch data");
+    
     const interval = setInterval(() => {
       fetchFoodlist(); // Auto-fetch every 10 seconds
     }, 10000); // 10,000ms = 10 sec

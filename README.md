@@ -1,7 +1,7 @@
 # This is repo
 
-
-# frontend url = "https://food-delivery-frontend-ag9z.onrender.com"
+# This is Shopping Website.It is working Properly at shop.
+# frontend url = "https://krishna-kirna-store-kks.onrender.com"
 
 # backend url = "https://food-delivery-backend-4u6z.onrender.com"
  
