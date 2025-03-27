@@ -15,7 +15,6 @@ import Biscuits from "./grocery_item/Biscuits-and-cookies.avif";
 import Colddrink from "./grocery_item/Cool_drink.jpg";
 import other from "./background4.webp";
 
-
 import add_icon_white from "./add_icon_white.png";
 import add_icon_green from "./add_icon_green.png";
 import remove_icon_red from "./remove_icon_red.png";
@@ -32,8 +31,16 @@ import bag_icon from "./bag_icon.png";
 import logout_icon from "./logout_icon.png";
 import parcel_icon from "./parcel_icon.png";
 
+import sugar1 from "./shop_inside_img/No-Sugar-Diet-2.jpg";
+import ghee from "./shop_inside_img/Ghee-Price.jpg";
+import oil from "./shop_inside_img/rows-variety-type-brand-cooking-oil-product-shelves-grocery-store-supermarket-kuala-lumpur-malaysia-may-225535412.webp";
+import bean from "./shop_inside_img/indianbeanspulseslentils_655511.jpg";
+
 export const assets = {
- 
+  sugar1,
+  ghee,
+  oil,
+  bean,
   E_commerece_logo,
   E_commerce_logo2,
   basket_icon,
@@ -90,9 +97,7 @@ export const menu_list = [
     menu_image: Colddrink,
   },
   {
-    menu_name :"Other Item",
-    menu_image:other
-  }
+    menu_name: "Other Item",
+    menu_image: other,
+  },
 ];
-
-

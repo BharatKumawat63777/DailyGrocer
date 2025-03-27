@@ -57,17 +57,39 @@ const StoreContextProvider = (props) => {
 
     return totalAmount;
   };
-  let count =true; //it is using to check first time data fetching more time taking then costmer information
-  const fetchFoodlist = async () => { 
-    const response = await axios.get(url + "/api/food/list");
-    setFoodlist(response.data.data);
-    if(count==true) toast.success("Successful Fetch data");
-    count = false;
+
+  let isFirstFetch = true; // Flag to track first-time fetch
+
+  let toastId;
+  const fetchFoodlist = async () => {
+    try {
+      const response = await axios.get(url + "/api/food/list");
+      setFoodlist(response.data.data);
+
+      if (isFirstFetch) {
+        toast.update(toastId, {
+          render: "Data fetched successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
+        isFirstFetch = false; // Prevent spinner from showing again
+      }
+    } catch (error) {
+      console.error("Error fetching food list:", error);
+      if (isFirstFetch) {
+        toast.update(toastId, {
+          render: "Failed to fetch data",
+          type: "error",
+          isLoading: false,
+          autoClose: 2000,
+        });
+      }
+    }
   };
   useEffect(() => {
-    toast.success("wait few seconds please");
+    toastId = toast.loading("Fetching data..."); // Show spinner only first time
     fetchFoodlist();
-    
     const interval = setInterval(() => {
       fetchFoodlist(); // Auto-fetch every 10 seconds
     }, 10000); // 10,000ms = 10 sec

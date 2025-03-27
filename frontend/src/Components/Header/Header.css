@@ -1,89 +1,90 @@
-.header {
-  height: 34vw;
-  margin: 30px auto;
-  background: url("../../assets/frontend_assets/create_image2.jpg") no-repeat;
-  background-repeat: repeat-x;
-  background-size: contain;
+/* Container */
+.header-container {
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Carousel Wrapper */
+.header-carousel-wrapper {
+  width: 100%;
   position: relative;
 }
 
-.header-contents {
+/* Title */
+.header-title {
+  margin-bottom: 20px;
+}
+
+.header-title h1 {
+  color: #262626;
+  font-weight: 500;
+}
+
+/* Carousel */
+.header-carousel {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 20px;
+}
+
+/* Slide */
+.header-slide {
+  text-align: center;
+  background-color: #2d3748;
+
+  transition: opacity 1s ease-in-out;
+}
+
+/* Image Styling */
+.header-carousel-img {
+  width: 100%;
+  max-height: 400px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+
+  display: block;
+  margin: 0 auto;
+}
+
+/* Slide Text */
+.header-slide h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.header-slide p {
+  color: #a0aec0;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Navigation Buttons */
+.header-nav-button {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 1.5vw;
-  max-width: 50%;
-  bottom: 10%;
-  left: 6vw;
-  animation: fadeIn 3s;
-}
-
-.header-contents h2 {
-  font-weight: 500;
-  color: #fcfcfc;
-  font-size: max(4.5vw, 22px);
-}
-.header-contents h2 {
-  /* font-weight: bold; */
-  animation: colorChange 30s infinite alternate;
-}
-
-@keyframes colorChange {
-  0% {
-    color: red;
-  }
-  25% {
-    color: rgb(242, 223, 21);
-  }
-  50% {
-    color: rgb(21, 241, 153);
-  }
-  75% {
-    color: rgb(247, 6, 14);
-  }
-  100% {
-    color: purple;
-  }
-}
-
-.header-contents p {
-  color: #1c1284;
-  font-size: 1vw;
-}
-
-.header-contents button {
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
   border: none;
-  color: #ffffff;
-  font-weight: 500;
-  padding: 1vw 2.3vw;
-  background-color: #3b82f6;
-  font-size: max(1vw, 13px);
-  border-radius: 50px;
-}
-
-.header-contents button:hover {
+  padding: 10px 15px;
+  border-radius: 50%;
   cursor: pointer;
-  background-color: #2563eb;
+  transition: background-color 0.5s ease-in-out;
 }
 
-@media (max-width: 1050px) {
-  .header {
-    height: 38vw;
-  }
-  .header-contents {
-    max-width: 45%;
-  }
+.header-nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-@media (max-width: 750px) {
-  .header-contents {
-    max-width: 55%;
-  }
-  .header-contents p {
-    display: none;
-  }
-  .header-contents button {
-    padding: 2vw 4vw;
-  }
+.header-left {
+  left: 10px;
+}
+
+.header-right {
+  right: 10px;
 }
