@@ -32,6 +32,7 @@ const Add = () => {
     formData.append("category", data.category);
     formData.append("image", image);
 
+    let toastId = toast.loading("Fetching data...");
     const response = await axios.post(`${url}/api/food/add`, formData);
 
     if (response.data.success) {
@@ -42,9 +43,19 @@ const Add = () => {
         category: "Salad",
       });
       setImage(false);
-      toast.success(response.data.message);
+      toast.update(toastId, {
+        render: "Data fetched successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } else {
-      toast.error(response.data.message);
+      toast.update(toastId, {
+        render: "Error!",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
     }
   };
 

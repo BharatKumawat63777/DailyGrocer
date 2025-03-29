@@ -9,7 +9,7 @@ import { setOrders } from "../redux/action";
 
 const Orders = () => {
   const url = useSelector((state) => state.url.url);
-
+  let toastId;
   const orders = useSelector((state) => state.orders.orders);
   const dispatch = useDispatch();
 
@@ -19,27 +19,48 @@ const Orders = () => {
     if (response.data.success) {
       dispatch(setOrders(response.data.data));
     } else {
-      toast.error("Error");
+      toast.update(toastId, {
+        render: "",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
     }
   };
 
   const statusHandler = async (event, orderId) => {
+    let toaststatus = toast.loading("Fetching data...");
     const response = await axios.post(url + "/api/order/updatestatus", {
       orderId,
       status: event.target.value,
     });
 
     if (response.data.success) {
-      toast.success(response.data.message);
+      toast.update(toaststatus, {
+        render: response.data.message,
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } else {
-      toast.error("Error");
+      toast.update(toaststatus, {
+        render: "Status Error",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
     }
   };
 
   useEffect(() => {
-    toast.success("Wait few time...");
+    toastId = toast.loading("Fetching data...");
     AllorderList();
-    toast.success("Successfully complete...");
+    toast.update(toastId, {
+      render: "successfully!",
+      type: "success",
+      isLoading: false,
+      autoClose: 1000,
+    });
     const interval = setInterval(() => {
       AllorderList(); // Auto-fetch every 10 seconds
     }, 3000); // 3,000ms = 3 sec

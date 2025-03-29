@@ -9,12 +9,14 @@
     width: max(10%,80px);
     height: 80px;
     clip-path: circle(70%);
+    border: 5px solid green;
     /* object-fit: cover; */
 }
 
 .navbar .profile{
-    width: 100px;
+    width: 20%;
     height: 80px;
-    clip-path: circle(50%);
-    object-fit: cover;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    
 }

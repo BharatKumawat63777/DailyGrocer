@@ -11,13 +11,23 @@ const List = () => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
-    toast.success("Wait a minute...");
+    let toastId = toast.loading("Upload data...");
     const response = await axios.get(`${url}/api/food/list`);
     if (response.data.success) {
-      toast.success("Successfully fatch data");
       setList(response.data.data);
+      toast.update(toastId, {
+        render: "Successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } else {
-      toast.error("Error");
+      toast.update(toastId, {
+        render: "Error Upload time",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
     }
   };
 
