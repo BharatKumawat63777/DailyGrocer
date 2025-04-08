@@ -48,6 +48,13 @@ const Navbar = ({ setShowLogin }) => {
         >
           contact us
         </a>
+        <Link
+          to="/chat"
+          onClick={() => setMenu("chat")}
+          className={menu === "chat" ? "active" : ""}
+        >
+          Chat
+        </Link>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" className="search-icon" />

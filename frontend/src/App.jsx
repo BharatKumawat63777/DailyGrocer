@@ -8,12 +8,28 @@ import Footer from "./Components/Footer/Footer";
 import LoginPopup from "./Components/LoginPopup/LoginPopup";
 import Verify from "./Verify/Verify";
 import Myorder from "./pages/Myorders/myorder";
+import Chat from "./chat/chat";
 import { ToastContainer } from "react-toastify";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="colored"
+        toastStyle={{
+          marginTop: "80px",
+          width: "250px",
+        }}
+      />
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
@@ -23,6 +39,7 @@ const App = () => {
           <Route path="/order" element={<PlaceOrder />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/myorders" element={<Myorder />} />
+          <Route path="/chat" element={<Chat/>} />
         </Routes>
       </div>
       <Footer />

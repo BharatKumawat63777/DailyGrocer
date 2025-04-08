@@ -33,7 +33,7 @@ const Footer = () => {
       </div>
       <hr />
       <p className="footer-copyright">
-        Copyright 2024 @krishnakirna.com- all Right Reserved.
+        Copyright {new Date().getFullYear()} @krishnakirna.com- all Right Reserved.
       </p>
     </div>
   );
