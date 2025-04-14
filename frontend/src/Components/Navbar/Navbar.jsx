@@ -1,19 +1,39 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/frontend_assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const {
+    foodlist,
+    searchbar,
+    setSearchbar,
+    getTotalCartAmount,
+    token,
+    setToken,
+  } = useContext(StoreContext);
   const navigate = useNavigate();
-
+  const [inputText, setInputText] = useState("");
   const logout = () => {
     console.log("logout");
     localStorage.removeItem("token");
     setToken("");
     navigate("/");
   };
+
+  useEffect(() => {
+    handlersearch();
+  }, [inputText]);
+
+  const handlersearch = () => {
+    
+    const filterData = foodlist.filter((item) =>
+      item.name.toLowerCase().includes(inputText.toLowerCase()) ||item.description.toLowerCase().includes(inputText.toLowerCase())
+    );
+    setSearchbar(filterData);
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -57,7 +77,15 @@ const Navbar = ({ setShowLogin }) => {
         </Link>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" className="search-icon" />
+        <div id="searchbar" onClick={() => handlersearch()}>
+          <input
+            type="text"
+            placeholder="Seaching...."
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+          <img src={assets.search_icon} alt="" className="search-icon" />
+        </div>
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />

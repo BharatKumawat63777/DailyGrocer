@@ -1,18 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./FoodDisplay.css";
 import { StoreContext } from "../../context/StoreContext";
 import Fooditem from "../Fooditem/Fooditem";
 
 const FoodDisplay = ({ category }) => {
-  const { foodlist } = useContext(StoreContext);
+  const { foodlist, searchbar, setSearchbar } = useContext(StoreContext);
+  const [result, setResult] = useState(foodlist);
+
   useEffect(() => {
-    FoodDisplay;
-  }, [foodlist]);
+    // Check if searchbar is empty or not
+    if (searchbar.length === 0) {
+      setResult(foodlist);
+    } else {
+      setResult(searchbar);
+    }
+  }, [searchbar, foodlist]);
+
   return (
     <div className="food-display" id="food-display">
       <h2>Available Items in shop</h2>
       <div className="food-display-list">
-        {foodlist.map((item, index) => {
+        {result?.map((item, index) => {
           if (category === "All" || category === item.category) {
             return (
               <Fooditem
