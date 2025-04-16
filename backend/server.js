@@ -27,7 +27,7 @@ app.use("/api/order", orderRoutes);
 app.get("/", (req, res) => {
   res.send("API Working");
 });
-app.use("/api/chat",GenAI);
+app.use("/api/chat", GenAI);
 
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);

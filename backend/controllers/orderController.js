@@ -13,9 +13,14 @@ const placeOrder = async (req, res) => {
       amount: req.body.amount,
       address: req.body.address,
     });
+
     await newOrder.save();
     await userModel.findByIdAndUpdate(req.body.userID, { cartData: {} });
-   
+
+    if (newOrder.address.payment_type == "COD") {
+      return res.json({ success: true });
+    }
+
     const line_items = req.body.items.map((item) => ({
       price_data: {
         currency: "inr",
@@ -42,7 +47,7 @@ const placeOrder = async (req, res) => {
       success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
     });
-    
+
     res.json({ success: true, session_url: session.url });
   } catch (error) {
     console.log(error);
@@ -70,7 +75,7 @@ const verifyOrder = async (req, res) => {
 const userOrders = async (req, res) => {
   try {
     const orders = await orderModel.find({ userId: req.body.userID });
-   
+
     res.json({ success: true, data: orders });
   } catch (error) {
     console.log(error);

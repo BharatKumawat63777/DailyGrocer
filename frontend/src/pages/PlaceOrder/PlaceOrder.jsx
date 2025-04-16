@@ -6,7 +6,7 @@ import axios from "axios";
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, foodlist, cartItem, url } =
     useContext(StoreContext);
-
+  const navigate = useNavigate();
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -16,6 +16,7 @@ const PlaceOrder = () => {
     zipcode: "",
     country: "",
     phone: "",
+    payment_type: "COD",
   });
 
   const onchangehandler = (event) => {
@@ -45,13 +46,16 @@ const PlaceOrder = () => {
     });
     
     if (response.data.success) {
-      const { session_url } = response.data;
-      window.location.replace(session_url);
+      if (data.payment_type == "online") {
+        const { session_url } = response.data;
+        window.location.replace(session_url);
+      }
+
+      navigate("/myorders");
     } else {
       alert("Error");
     }
   };
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
@@ -157,9 +161,29 @@ const PlaceOrder = () => {
               </b>
             </div>
             <hr />
-            <button type="submit" onClick={() => navigate("/order")}>
-              PROCEED TO PAYMENT
-            </button>
+            <div className="payment">
+              <button
+                type="submit"
+                onClick={() =>
+                  onchangehandler({
+                    target: { name: "payment_type", value: "online" },
+                  })
+                }
+              >
+                PROCEED TO PAYMENT
+              </button>
+              <button
+                type="submit"
+                className="cod-button"
+                onClick={() =>
+                  onchangehandler({
+                    target: { name: "payment_type", value: "COD" },
+                  })
+                }
+              >
+                COD(Cashe on Delivery)
+              </button>
+            </div>
           </div>
         </div>
       </div>
