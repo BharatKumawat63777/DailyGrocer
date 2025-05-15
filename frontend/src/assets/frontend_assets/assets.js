@@ -36,7 +36,12 @@ import ghee from "./shop_inside_img/Ghee-Price.jpg";
 import oil from "./shop_inside_img/rows-variety-type-brand-cooking-oil-product-shelves-grocery-store-supermarket-kuala-lumpur-malaysia-may-225535412.webp";
 import bean from "./shop_inside_img/indianbeanspulseslentils_655511.jpg";
 
+import kaju from "./kaju-raw-5.jpg";
+import Cardamom from "./Elaichi.jpg";
+
 export const assets = {
+  kaju,
+  Cardamom,
   sugar1,
   ghee,
   oil,

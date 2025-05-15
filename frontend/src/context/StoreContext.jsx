@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { assets } from "../assets/frontend_assets/assets";
 // import { useContext } from "react";
 
 export const StoreContext = createContext();
@@ -8,10 +9,28 @@ export const StoreContext = createContext();
 const StoreContextProvider = (props) => {
   const [cartItem, setCartItem] = useState({});
   const url = "https://food-delivery-backend-4u6z.onrender.com";
-  // const url ="http://localhost:4000"; // local host using
+  // const url = "http://localhost:4000"; // local host using
   const [token, setToken] = useState("");
-  const [foodlist, setFoodlist] = useState([]);
   const [searchbar, setSearchbar] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const [foodlist, setFoodlist] = useState([
+    {
+      _id: "12546",
+      name: "Kaju",
+      description: "It's good for health. (250gm)",
+      price: 230,
+      image: assets.kaju,
+      category: "Biscuits",
+    },
+    {
+      _id: "54128",
+      name: "Cardamom",
+      description: "It's best seller in this time(10gm)",
+      price: 35,
+      image: assets.Cardamom,
+      category: "Biscuits",
+    },
+  ]);
 
   const addToCart = async (itemId) => {
     console.log("addtocart item");
@@ -67,7 +86,14 @@ const StoreContextProvider = (props) => {
   const fetchFoodlist = async () => {
     try {
       const response = await axios.get(url + "/api/food/list");
-      setFoodlist(response.data.data);
+      const backendData = response.data.data;
+      setFoodlist((prevList) => {
+        const newItems = backendData.filter(
+          (newItem) =>
+            !prevList.some((existing) => existing._id === newItem._id)
+        );
+        return [...prevList, ...newItems];
+      });
 
       if (isFirstFetch) {
         toast.update(toastId, {
@@ -125,6 +151,8 @@ const StoreContextProvider = (props) => {
   }, []);
 
   const contextValue = {
+    inputText,
+    setInputText,
     searchbar,
     setSearchbar,
     foodlist,

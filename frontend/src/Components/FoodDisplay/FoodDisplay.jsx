@@ -4,12 +4,11 @@ import { StoreContext } from "../../context/StoreContext";
 import Fooditem from "../Fooditem/Fooditem";
 
 const FoodDisplay = ({ category }) => {
-  const { foodlist, searchbar, setSearchbar } = useContext(StoreContext);
+  const { foodlist, searchbar, inputText } = useContext(StoreContext);
   const [result, setResult] = useState(foodlist);
 
   useEffect(() => {
-    // Check if searchbar is empty or not
-    if (searchbar.length === 0) {
+    if (inputText.length === 0) {
       setResult(foodlist);
     } else {
       setResult(searchbar);

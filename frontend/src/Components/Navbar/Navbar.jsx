@@ -6,6 +6,8 @@ import { StoreContext } from "../../context/StoreContext";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const {
+    inputText,
+    setInputText,
     foodlist,
     searchbar,
     setSearchbar,
@@ -14,7 +16,7 @@ const Navbar = ({ setShowLogin }) => {
     setToken,
   } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [inputText, setInputText] = useState("");
+
   const logout = () => {
     console.log("logout");
     localStorage.removeItem("token");
@@ -27,11 +29,22 @@ const Navbar = ({ setShowLogin }) => {
   }, [inputText]);
 
   const handlersearch = () => {
-    
-    const filterData = foodlist.filter((item) =>
-      item.name.toLowerCase().includes(inputText.toLowerCase()) ||item.description.toLowerCase().includes(inputText.toLowerCase())
+    const filterData = foodlist.filter(
+      (item) =>
+        item.name?.toLowerCase().includes(inputText.toLowerCase()) ||
+        item.description?.toLowerCase().includes(inputText.toLowerCase())
     );
     setSearchbar(filterData);
+  };
+
+  const handleClick = (id) => {
+    navigate("/#" + id); // changes URL but won't scroll automatically
+    setTimeout(() => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // wait briefly for navigation to complete
   };
 
   return (
@@ -48,22 +61,34 @@ const Navbar = ({ setShowLogin }) => {
           Home
         </Link>
         <a
-          href="#explore-menu"
-          onClick={() => setMenu("Menu")}
+          href="/#explore-menu"
+          onClick={(e) => {
+            e.preventDefault(); // prevent full page reload
+            setMenu("Menu");
+            handleClick("explore-menu");
+          }}
           className={menu === "Menu" ? "active" : ""}
         >
           Groceries
         </a>
         <a
-          href="#app-download"
-          onClick={() => setMenu("Mobile-app")}
+          href="/#app-download"
+          onClick={(e) => {
+            e.preventDefault(); // prevent full page reload
+            setMenu("Moblie-app");
+            handleClick("app-download");
+          }}
           className={menu === "Mobile-app" ? "active" : ""}
         >
           Mobile-app
         </a>
         <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
+          href="/#footer"
+          onClick={(e) => {
+            e.preventDefault(); // prevent full page reload
+            setMenu("Contact-us");
+            handleClick("footer");
+          }}
           className={menu === "contact-us" ? "active" : ""}
         >
           contact us
