@@ -35,3 +35,18 @@
   padding: 10px;
   outline: none;
 }
+
+.Orderstatus_delete img {
+  width: max(35px);
+  height: max(35px);
+  position: relative;
+  top: 90px;
+  left: 100px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.Orderstatus_delete img:hover {
+  border-bottom: 3px solid red;
+  
+}

@@ -15,7 +15,7 @@ const Orders = () => {
 
   const AllorderList = async () => {
     const response = await axios.get(url + "/api/order/listorders");
-
+    
     if (response.data.success) {
       dispatch(setOrders(response.data.data));
     } else {
@@ -52,21 +52,49 @@ const Orders = () => {
     }
   };
 
-  useEffect(() => {
+  const fetchdata = async () => {
     toastId = toast.loading("Fetching data...");
-    AllorderList();
+    await AllorderList();
     toast.update(toastId, {
       render: "successfully!",
       type: "success",
       isLoading: false,
       autoClose: 1000,
     });
+  };
+
+  useEffect(() => {
+    fetchdata();
     const interval = setInterval(() => {
-      AllorderList(); // Auto-fetch every 10 seconds
-    }, 3000); // 3,000ms = 3 sec
+      AllorderList();
+    }, 10000); // 10,000ms = 10 sec
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
+
+  const Delete_item = async (orderid) => {
+    let toaststatus = toast.loading("...");
+    const response = await axios.post(url + "/api/order/orderdelete", {
+      _id: orderid,
+    });
+
+    if (response.data.success) {
+      toast.update(toaststatus, {
+        render: response.data.message,
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
+    } else {
+      toast.update(toaststatus, {
+        render: "Status Error",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
+      AllorderList();
+    }
+  };
 
   return (
     <div className="order add">
@@ -109,14 +137,21 @@ const Orders = () => {
               Amount :&#8377;
               {order.amount}
             </p>
-            <select
-              onChange={(event) => statusHandler(event, order._id)}
-              value={order.status}
-            >
-              <option value="Food Processing">Food Processing</option>
-              <option value="Out for delivery">Out for Delivery</option>
-              <option value="Delivered">Delivered</option>
-            </select>
+            <div className="Orderstatus_delete">
+              <select
+                onChange={(event) => statusHandler(event, order._id)}
+                value={order.status}
+              >
+                <option value="Food Processing">Food Processing</option>
+                <option value="Out for delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+              <img
+                src={assets.delete_item}
+                alt="delete item"
+                onClick={() => Delete_item(order._id)}
+              />
+            </div>
           </div>
         ))}
       </div>

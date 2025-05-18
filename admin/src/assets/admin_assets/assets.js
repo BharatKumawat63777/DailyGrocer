@@ -7,7 +7,9 @@ import parcel_icon from "./parcel_icon.png";
 import parcel_beg from "./parcel_beg.webp";
 import profile from "./profile_img1.jpg";
 import admin_panel from "./admin_panel.png";
+import delete_item from "./delete.png";
 export const assets = {
+  delete_item,
   logo,
   add_icon,
   order_icon,
