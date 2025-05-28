@@ -1,14 +1,14 @@
 # This is repo
 
 # This is Shopping Website.It is working Properly at shop.
+
 # frontend url = "https://krishna-kirna-store-kks.onrender.com"
 
 # backend url = "https://food-delivery-backend-4u6z.onrender.com"
- 
- # admin url = contact admin  
 
+# admin url = contact admin
 
- 🛒 Grocery Items Website
+🛒 Grocery Items Website
 A full-featured web application that allows users to browse, search, and manage grocery items. This project is designed for learning and demonstration purposes, showcasing full-stack development skills.
 
 📌 Features
@@ -22,7 +22,7 @@ Admin panel to manage products
 
 Responsive UI for desktop and mobile
 
-Order placement and status tracking 
+Order placement and status tracking
 
 🧰 Tech Stack
 Frontend
@@ -81,7 +81,6 @@ Copy
 Edit
 http://localhost:5000
 
-
 🧪 Future Improvements
 Email notifications for orders
 
@@ -94,4 +93,11 @@ Dark mode
 🙋‍♂️ Author
 Bharat
 (https://github.com/BharatKumawat63777/)
+
+Adding Photoes
+![Homepage Screenshot](./img/home_page.jpeg)
+![AL](./img/AI.jpeg)
+![Cart-item](./img/cart-item.jpeg)
+![Order-track](./img/order_track.jpeg)
+![Delivery-add](./img/delivery-address.jpeg)
 
