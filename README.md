@@ -1,11 +1,5 @@
 
-# This is Shopping Website.It is working Properly at shop.
-
-## frontend url = "https://krishna-kirna-store-kks.onrender.com"
-
-## backend url = "https://food-delivery-backend-4u6z.onrender.com"
-
-## admin url = contact admin
+# Users Interaction (Frontend)
 
 ### 🛒 Grocery Items Website
 A full-featured web application that allows users to browse, search, and manage grocery items. This project is designed for learning and demonstration purposes, showcasing full-stack development skills.
@@ -93,31 +87,91 @@ Bharat
 
 ## User Interaction Photos
 
-#### 🏠 Homepage
+### 🏠 Homepage
 ![Homepage Screenshot](./img/home_page.jpeg)
 
 
-#### Chat with AI
+### Chat with AI
 ![AL](./img/AI.jpeg)
 
 
-#### 🛒 Adding items to cart
+### 🛒 Adding items to cart
 ![Cart-item](./img/cart-item.jpeg)
 
 
-#### 🔍 Searching for Items
+### 🔍 Searching for Items
 ![Searching-Item](./img/Search-icon.jpeg)
 
 
-#### ✅ Order confirmation
-![Order-track](./img/order_track.jpeg)
+### ✅ Order confirmation
+![Order-track](./img/order.jpeg)
 
 
-#### 📬 Filling delivery/receiver info
+### 📬 Filling delivery/receiver info
 ![Delivery-add](./img/delivery-address.jpeg)
 
 
-## Admin Portal
+# 🛠️Admin Panel
+
+The Admin Panel allows authorized users to manage all backend operations of the grocery platform. It provides full control over products, orders, users, and inventory.
+
+
+## 🧰 Features
+
+#### 🛍️ Product Management
+
+Add, edit, or delete grocery items
+
+#### Upload product images
+
+Set price and category
+
+#### 📦 Order Management
+
+View all customer orders
+
+Change order status: Pending, Packed, Shipped, Delivered
+
+Track payment and delivery details
+
+#### 👥 User Management
+
+View registered users
+
+Promote or revoke admin access
+
+Delete suspicious or inactive accounts
+
+
+## 🧑‍💻 Tech Stack (Admin Side)
+Node.js + Express.js for backend logic
+
+MongoDB for storing order, and product data
+
+Admin routes protected with JWT authentication
+
+Admin UI :  React & Bootstrap admin dashboard
+
+
+## 🧪 Future Improvements
+
+See total sales, number of orders, and user activity
+
+Visual charts for revenue and inventory trends (optional)
+
+
+## Photos
+
+### Add-Items
+![add-items](./img/add-items.jpeg)
+
+### Ordered Items
+![ordered-item](./img/ordered-item.jpeg)
+
+### List Items
+![List-items](./img/List-items.jpeg)
+
+
 
 
 
