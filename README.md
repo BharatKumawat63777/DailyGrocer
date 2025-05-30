@@ -1,17 +1,16 @@
-# This is repo
 
 # This is Shopping Website.It is working Properly at shop.
 
-# frontend url = "https://krishna-kirna-store-kks.onrender.com"
+## frontend url = "https://krishna-kirna-store-kks.onrender.com"
 
-# backend url = "https://food-delivery-backend-4u6z.onrender.com"
+## backend url = "https://food-delivery-backend-4u6z.onrender.com"
 
-# admin url = contact admin
+## admin url = contact admin
 
-🛒 Grocery Items Website
+### 🛒 Grocery Items Website
 A full-featured web application that allows users to browse, search, and manage grocery items. This project is designed for learning and demonstration purposes, showcasing full-stack development skills.
 
-📌 Features
+### 📌 Features
 User registration and login
 
 Browse and search grocery items
@@ -24,20 +23,18 @@ Responsive UI for desktop and mobile
 
 Order placement and status tracking
 
-🧰 Tech Stack
-Frontend
+### 🧰 Tech Stack
+#### Frontend
 
-HTML, CSS, JavaScript
+HTML, CSS, JavaScript, React.js, Restful APIs
 
-Framwork: React.js,Reduc Tolkit
-
-Backend
+#### Backend
 
 Node.js, Express.js
 
 MongoDB & Mongoose for database
 
-🚀 Getting Started
+### 🚀 Getting Started
 Follow these instructions to get a copy of the project running on your local machine.
 
 Prerequisites
@@ -81,7 +78,7 @@ Copy
 Edit
 http://localhost:5000
 
-🧪 Future Improvements
+### 🧪 Future Improvements
 Email notifications for orders
 
 Product reviews and ratings
@@ -90,14 +87,38 @@ Payment gateway integration
 
 Dark mode
 
-🙋‍♂️ Author
+### 🙋‍♂️ Author
 Bharat
 (https://github.com/BharatKumawat63777/)
 
-Adding Photoes
+## User Interaction Photos
+
+#### 🏠 Homepage
 ![Homepage Screenshot](./img/home_page.jpeg)
+
+
+#### Chat with AI
 ![AL](./img/AI.jpeg)
+
+
+#### 🛒 Adding items to cart
 ![Cart-item](./img/cart-item.jpeg)
+
+
+#### 🔍 Searching for Items
+![Searching-Item](./img/Search-icon.jpeg)
+
+
+#### ✅ Order confirmation
 ![Order-track](./img/order_track.jpeg)
+
+
+#### 📬 Filling delivery/receiver info
 ![Delivery-add](./img/delivery-address.jpeg)
+
+
+## Admin Portal
+
+
+
 
